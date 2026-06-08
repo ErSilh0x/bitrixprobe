@@ -1249,7 +1249,7 @@ def build_summary(presence, engine_info, inventories, findings) -> str:
             f"low={severity_counts['low']}, "
             f"info={severity_counts['info']}"
         ),
-        #f"Guidance: {OWASP_DOCKER_CHEAT_SHEET}",
+        f"Guidance: {OWASP_DOCKER_CHEAT_SHEET}",
     ]
 
     return "\n".join(lines)
