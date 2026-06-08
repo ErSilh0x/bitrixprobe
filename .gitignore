@@ -13,6 +13,10 @@
 !img/
 !img/bp_logo.jpg
 !img/bitrixprobe-pipeline.gif
+!img/restore_exmpl.gif
+!img/pmodules_exmpl.gif
+!img/amodules_exmpl.gif
+!img/audit_vuln_exmpl.gif
 
 !reports/
 !reports/.gitkeep

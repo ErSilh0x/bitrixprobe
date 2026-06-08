@@ -71,26 +71,45 @@ BitrixProbe prints each module result while the scan is running and saves the
 same human-readable evidence in a report. The following examples explain the
 information produced by pentest and audit scans.
 
-### Pentest Scan Example
+
+### Pentest Scan Examples
 
 Pentest modules perform external HTTP/HTTPS checks without requiring access to
 the target server. For example, the `restore.php` exposure check can identify a
 publicly reachable Bitrix backup restoration script.
 
-The module reports the tested URL, HTTP response metadata, and the Bitrix
-markers that confirmed the finding. A positive `Detected: yes` result means the
-module found matching evidence; it does not mean every possible exploitation
-step was attempted.
+![restore.php](img/restore_exmpl.gif)
 
-### Audit Scan Example
+The module reports the tested URL, HTTP response metadata, and the Bitrix markers that confirmed the finding. 
+A positive `Detected: yes` result means the module found matching evidence.
+
+Recon and enumeration are key in any attack. With this in mind, for security, it is important to understand what 
+configurations and components are deployed and accessible to the attacker.
+Bitrix has many modules that occasionally contain vulnerabilities. 
+It is a good idea to try to identify which modules are installed in Bitrix. 
+For this, I've made an enumeration check that compares present static files accessible on the web server 
+with a wordlist. Its results might give clues about which default modules are present on the filesystem and installed.
+By identifying plugins, it is possible to determine whether it is a 1C-Bitrix or Bitrix24 version of the CMS.
+Below, we can see that the landing module is likely installed, and the CMS appears to be 1C-Bitrix CMS.
+
+![modules](img/pmodules_exmpl.gif)
+
+
+### Audit Scan Examples
 
 Audit modules run authenticated server-side checks through SSH. For example,
 an audit check can compare installed Bitrix module versions with the local
-vulnerability database.
+vulnerability database. Below are some results for present and installed modules, as well as outdated versions.
+Some module information might be missing from the database because the vendor does not share all data on the website.
 
-The result identifies the installed module version, vulnerability identifiers,
-severity, and the version containing the fix. Audit findings should be reviewed
-against the server configuration and the vendor advisory before remediation.
+![amodules](img/amodules_exmpl.gif)
+
+The result below shows the installed module version, vulnerability identifiers,
+severity, and the version containing the fix. For example, it displays the PT-Trending red flag, which signals 
+that this vulnerability is actively exploited in CIS. It is similar to the US CISA KEV.
+
+![avulns](img/audit_vuln_exmpl.gif)
+
 
 ### Result Statuses
 
