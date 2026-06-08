@@ -72,7 +72,7 @@ same human-readable evidence in a report. The following examples explain the
 information produced by pentest and audit scans.
 
 
-### Pentest Scan Examples
+### Result Examples
 
 Pentest modules perform external HTTP/HTTPS checks without requiring access to
 the target server. For example, the `restore.php` exposure check can identify a
@@ -100,13 +100,15 @@ Below, we can see that the landing module is likely installed, and the CMS appea
 Audit modules run authenticated server-side checks through SSH. For example,
 an audit check can compare installed Bitrix module versions with the local
 vulnerability database. Below are some results for present and installed modules, as well as outdated versions.
-Some module information might be missing from the database because the vendor does not share all data on the website.
+Some module information might be missing from the database because the vendor does not share all data on their website.
 
 ![amodules](img/amodules_exmpl.gif)
 
 The result below shows the installed module version, vulnerability identifiers,
 severity, and the version containing the fix. For example, it displays the PT-Trending red flag, which signals 
 that this vulnerability is actively exploited in CIS. It is similar to the US CISA KEV.
+There is also an EPSS metric, but it is available only if CVE is present. 
+Many vulnerabilities do not have CVE but instead have BDU.
 
 ![avulns](img/audit_vuln_exmpl.gif)
 
