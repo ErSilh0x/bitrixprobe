@@ -65,14 +65,14 @@ BitrixProbe is developed and tested in a controlled lab environments.
 | `audit` | Local server scans over SSH. | Required | Installed module checks, local configuration review, version comparison. |
 
 
-## Module Output Examples
+## Scan Examples
 
 BitrixProbe prints each module result while the scan is running and saves the
 same human-readable evidence in a report. The following examples explain the
 information produced by pentest and audit scans.
 
 
-### Result Examples
+### Pentest Scan
 
 Pentest modules perform external HTTP/HTTPS checks without requiring access to
 the target server. For example, the `restore.php` exposure check can identify a
@@ -95,7 +95,7 @@ Below, we can see that the landing module is likely installed, and the CMS appea
 ![modules](img/pmodules_exmpl.gif)
 
 
-### Audit Scan Examples
+### Audit Scan
 
 Audit modules run authenticated server-side checks through SSH. For example,
 an audit check can compare installed Bitrix module versions with the local
