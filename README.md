@@ -50,19 +50,23 @@ designed as vulnerability-specific probes or local audit checks.
 
 ## Tested Environment
 
-BitrixProbe is developed and tested in a controlled lab environments.
+BitrixProbe was developed and tested in a controlled lab environments.
 
-| Target OS                                          | PHP Version | Web Server | Bitrix Version / Edition |
-|----------------------------------------------------| --- | --- | -- |
-| Ubuntu 24.04.4 LTS Linux 6.8.0-117-generic aarch64 | PHP 8.3.6 | Apache/2.4.58 | 1C-Bitrix/Bitrix24 26.150.0 |
+| Target OS                                                          | PHP Version | Web Server | Bitrix Version / Edition |
+|--------------------------------------------------------------------| --- | --- |--------------------------|
+| Ubuntu 24.04.4 LTS / 6.8.0-117-generic aarch64 Linux               | PHP 8.3.6 | Apache/2.4.58 | 1C-Bitrix/Bitrix24 26.150.0 |
+| VMBitrix 9.0.9 CentOS Stream 9 / 5.14.0-710.el9.x86_64 Linux       | PHP 8.2.31 | Apache/2.4.62<br/>nginx/1.30.2 | Bitrix24 26.150.0 |
+| VMBitrix 9.0.9 AlmaLinux 9.7 / 5.14.0-611.26.1.el9_7.x86_64 Linux  | PHP 8.2.30 | Apache/2.4.62<br/>nginx/1.28.1 | Bitrix24 26.150.0 |
+| VMBitrix 9.0.9 Rocky Linux 9.7 / 5.14.0-611.24.1.el9_7.x86_64 Linux | PHP 8.2.30 | Apache/2.4.62<br/>nginx/1.28.1 | Bitrix24 26.150.0 |
+| RED OS 8.0.2 / 6.12.92-1.red80.x86_64 Linux                        | PHP 8.4.19 |   nginx/1.30.2         |  Bitrix24 26.150.0 |
 
 
 ## Modes
 
-| Mode | Description | Authentication | Typical Use |
-| --- | --- | --- | --- |
-| `pentest` | External HTTP/HTTPS scans against a target URL. | Not required | Public exposure checks, fingerprinting, unauthenticated probes. |
-| `audit` | Local server scans over SSH. | Required | Installed module checks, local configuration review, version comparison. |
+| Mode | Protocol       | Description | Authentication | Typical Use |
+| --- |----------------| --- | --- | --- |
+| `pentest` | TCP HTTP/HTTPS | External HTTP/HTTPS scans against a target URL. | Not required | Public exposure checks, fingerprinting, unauthenticated probes. |
+| `audit` | TCP SSH, SCP   | Local server scans over SSH. | Required | Installed module checks, local configuration review, version comparison. |
 
 
 ## Scan Examples

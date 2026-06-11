@@ -4,6 +4,8 @@ from urllib.parse import quote, urlparse
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+import urllib3
+from urllib3.exceptions import InsecureRequestWarning
 
 """
 Reusable HTTP client helpers for BitrixProbe pentest modules.
@@ -43,6 +45,31 @@ HTML_ACCEPT = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 IMAGE_ACCEPT = "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
 DEFAULT_ACCEPT = "*/*"
 _thread_local = threading.local()
+_tls_warning_lock = threading.Lock()
+_insecure_request_warning_disabled = False
+
+
+def configure_tls_warning_filter(verify_ssl) -> None:
+    """
+    Suppress only urllib3's warning when TLS verification is disabled.
+    Certificate, protocol, connection, and timeout errors are not suppressed.
+    """
+
+    global _insecure_request_warning_disabled
+
+    if verify_ssl:
+        return
+
+    if _insecure_request_warning_disabled:
+        return
+
+    with _tls_warning_lock:
+        if _insecure_request_warning_disabled:
+            return
+
+        urllib3.disable_warnings(InsecureRequestWarning)
+        _insecure_request_warning_disabled = True
+
 
 def get_default_user_agent() -> str:
     """
@@ -547,6 +574,8 @@ def run_http_request(session, target_url, path="", method="GET", timeout=DEFAULT
 
     if include_body is None:
         include_body = method != "HEAD"
+
+    configure_tls_warning_filter(verify_ssl) # Remove InsecureRequestWarning: Unverified HTTPS request
 
     display_url = build_target_url(
         target_url=target_url,
