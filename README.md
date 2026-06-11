@@ -66,7 +66,7 @@ BitrixProbe was developed and tested in a controlled lab environments.
 | Mode | Protocol       | Description | Authentication | Typical Use |
 | --- |----------------| --- | --- | --- |
 | `pentest` | TCP HTTP/HTTPS | External HTTP/HTTPS scans against a target URL. | Not required | Public exposure checks, fingerprinting, unauthenticated probes. |
-| `audit` | TCP SSH, SCP   | Local server scans over SSH. | Required | Installed module checks, local configuration review, version comparison. |
+| `audit` | TCP SSH, SFTP  | Local server scans over SSH. | Required | Installed module checks, local configuration review, version comparison. |
 
 
 ## Scan Examples
