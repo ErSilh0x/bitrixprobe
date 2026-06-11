@@ -29,9 +29,6 @@ def bold(text):
 def red_badge(text):
     """
     Return text highlighted as a red terminal badge.
-    37 — белый текст
-    41 — красный фон
-    1  — жирный
     """
 
     red_background = "\033[41m"
