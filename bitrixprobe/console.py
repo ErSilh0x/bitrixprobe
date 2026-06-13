@@ -42,6 +42,3 @@ def error_message(text):
 
 def hint_message(text):
     return f"{yellow('[*] Hint:')} {text}"
-
-
-#print(red_badge("TEST"))

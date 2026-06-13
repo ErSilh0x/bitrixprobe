@@ -233,45 +233,6 @@ def append_report_data(lines, data, indent=0, ignored_keys=None, max_list_items=
     lines.append(f"{prefix}{format_report_value(data)}")
 
 
-'''def append_pentest_context_sections(lines, context, pentest_config) -> None:
-    """
-    Append structured pentest context to the text report.
-    """
-
-    include_debug_details = pentest_config.get("include_debug_details", False)
-
-    ignored_keys = set()
-
-    if not include_debug_details:
-        ignored_keys = {
-            "dictionary_stats",
-            "probes",
-        }
-
-    max_list_items = pentest_config.get("report_max_list_items", 20)
-
-    for section_name, section_data in context.items():
-        if section_name == "target":
-            continue
-
-        if not section_data:
-            continue
-
-        lines.append(format_report_key(section_name))
-        lines.append("=" * 80)
-        lines.append("")
-
-        append_report_data(
-            lines=lines,
-            data=section_data,
-            indent=0,
-            ignored_keys=ignored_keys,
-            max_list_items=max_list_items,
-        )
-
-        lines.append("")'''
-
-
 def build_pentest_text_report(target_url, results, context, pentest_config) -> str:
     """
     Build a text report for pentest mode results.
