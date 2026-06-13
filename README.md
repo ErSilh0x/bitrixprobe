@@ -1,3 +1,5 @@
+**English** | [Русский](README_ru.md)
+
 # BitrixProbe
 
 ![logo](img/bp_logo.jpg)
