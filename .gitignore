@@ -10,6 +10,10 @@
 !requirements.txt
 !README.md
 
+!advisory/
+!advisory/Bitrix CMS Top 10 Security Issues_cl.pdf
+!advisory/Bitrix CMS Топ-10 проблем безопасности_cl.pdf
+
 !img/
 !img/bp_logo.jpg
 !img/bitrixprobe-pipeline.gif
